@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "todoist-scheduler"
+version = "0.1.0"
+description = ""
+authors = ["Michael Bianco <iloveitaly@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+todoist-api-python = "^1.1.0"
+
+[tool.poetry.dev-dependencies]
+ipython = "^8.0.1"
+ipdb = "^0.13.9"
+colorama = "^0.4.4"
+black = "^22.1.0"
+pylint = "^2.12.2"
+isort = "^5.10.1"
+rich = "^11.1.0"
+docrepr = "^0.2.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
