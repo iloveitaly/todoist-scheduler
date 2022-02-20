@@ -54,6 +54,8 @@ def apply_todoist_filters(task_limit, api_key, rules, dry_run, default_filter):
         # randomize the task order so different tasks are displayed for completion each day
         random.shuffle(low_priority_tasks)
 
+        # TODO should allow this to be customized
+
         # if sunday, force limit to 0
         limit_for_filter = 0 if is_sunday else rule["limit"]
 
