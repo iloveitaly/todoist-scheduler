@@ -2,7 +2,7 @@ import os
 
 import click
 from dotenv import load_dotenv
-import pyjson5 as json
+import pyjson5 as json # allows comments in json
 import main
 
 load_dotenv()
