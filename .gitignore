@@ -1,1 +1,4 @@
 .env
+__pycache__
+TODO
+filters.json
