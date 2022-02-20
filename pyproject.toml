@@ -9,6 +9,7 @@ python = "^3.8"
 todoist-api-python = "^1.1.0"
 click = "^8.0.3"
 python-dotenv = "^0.19.2"
+pyjson5 = "^1.6.1"
 
 [tool.poetry.dev-dependencies]
 ipython = "^8.0.1"

@@ -424,6 +424,14 @@ optional = false
 python-versions = ">=3.5"
 
 [[package]]
+name = "pyjson5"
+version = "1.6.1"
+description = "JSON5 serializer and parser for Python 3 written in Cython."
+category = "main"
+optional = false
+python-versions = "~=3.5"
+
+[[package]]
 name = "pylint"
 version = "2.12.2"
 description = "python code static checker"
@@ -716,7 +724,7 @@ python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,>=2.7"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "a4ad00104f2920669be75f365a890f3a20b6501344250a235a766c16bcb14e2e"
+content-hash = "07bc3c2563382a36b3b651951e81e1012993bc750eb974bb4a5781050f858686"
 
 [metadata.files]
 alabaster = [
@@ -992,6 +1000,72 @@ pure-eval = [
 pygments = [
     {file = "Pygments-2.11.2-py3-none-any.whl", hash = "sha256:44238f1b60a76d78fc8ca0528ee429702aae011c265fe6a8dd8b63049ae41c65"},
     {file = "Pygments-2.11.2.tar.gz", hash = "sha256:4e426f72023d88d03b2fa258de560726ce890ff3b630f88c21cbb8b2503b8c6a"},
+]
+pyjson5 = [
+    {file = "pyjson5-1.6.1-cp310-cp310-macosx_10_9_x86_64.whl", hash = "sha256:46f28ae6371a80a35484f4585f806053ee45b4e014bb8dd7ae71834254a17cd2"},
+    {file = "pyjson5-1.6.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.manylinux_2_24_x86_64.whl", hash = "sha256:4fa65c10c408c9b1cd450cfc4cddb4623e377341e31b830eea5f2d887daf66b6"},
+    {file = "pyjson5-1.6.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:a0057201343f3fe192402ca48c7eebdd60b0b641e7ebe062726f7beaa6a8292c"},
+    {file = "pyjson5-1.6.1-cp310-cp310-manylinux_2_5_i686.manylinux1_i686.manylinux_2_12_i686.manylinux2010_i686.whl", hash = "sha256:ff6eb6836f0596abbe7098bf407d69a84cb95621fb79d7e17c136677c4b50f6f"},
+    {file = "pyjson5-1.6.1-cp310-cp310-manylinux_2_5_i686.manylinux1_i686.manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:079764e76fbe1cee8028d4beed59715d750c8dc59d15d11aa222b158a215432d"},
+    {file = "pyjson5-1.6.1-cp310-cp310-manylinux_2_5_i686.manylinux1_i686.manylinux_2_24_i686.whl", hash = "sha256:bccc0a512cab4c2dbf9969a8e834e66db2669178e104e0dcc42c83ac583fc87c"},
+    {file = "pyjson5-1.6.1-cp310-cp310-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl", hash = "sha256:9a3a2c7be17c9b12a3e1cf48966978cb96d5b34c3f9f564ad1722a8fec358734"},
+    {file = "pyjson5-1.6.1-cp310-cp310-musllinux_1_1_i686.whl", hash = "sha256:de192fab17d116e22fb59c9658436bc8fb077d34d3e8c54b52de3c366d4a53d4"},
+    {file = "pyjson5-1.6.1-cp310-cp310-musllinux_1_1_x86_64.whl", hash = "sha256:cc8556d54f46043f62bd6fec7b81b6c04592a5d5e6aa5de2c64a6e4cc697ddfa"},
+    {file = "pyjson5-1.6.1-cp310-cp310-win_amd64.whl", hash = "sha256:9ca111e7d29892c009ce6c6c906c047ea6e2d43b8c2e56afd6ee6b8275880905"},
+    {file = "pyjson5-1.6.1-cp36-cp36m-macosx_10_9_x86_64.whl", hash = "sha256:6f76f3251b129c18519b913a4ab421d775f6cef46dcd37f8c0215289697d217d"},
+    {file = "pyjson5-1.6.1-cp36-cp36m-manylinux_2_17_x86_64.manylinux2014_x86_64.manylinux_2_24_x86_64.whl", hash = "sha256:786ede9dbf188114c7d330cadd51d3b7b469d6f37ad1bf32ebb803836fb0a4ab"},
+    {file = "pyjson5-1.6.1-cp36-cp36m-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:88e25e946c12bdef81bff0180c2cd48a83f537058dca8f780bfca96238c1f0eb"},
+    {file = "pyjson5-1.6.1-cp36-cp36m-manylinux_2_5_i686.manylinux1_i686.manylinux_2_12_i686.manylinux2010_i686.whl", hash = "sha256:0235ec9fb2aed82dc705aceb9c5e60d462b42f2717267910d3419e624ae684c4"},
+    {file = "pyjson5-1.6.1-cp36-cp36m-manylinux_2_5_i686.manylinux1_i686.manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:d99911f26da323596e920bfca3f2442be198a94fcc700330fa36332d157ba0ce"},
+    {file = "pyjson5-1.6.1-cp36-cp36m-manylinux_2_5_i686.manylinux1_i686.manylinux_2_24_i686.whl", hash = "sha256:2555797555887ac5b8c78c7f9a7edc1e388bdebb796a2a921e5cac7f4c90bf8a"},
+    {file = "pyjson5-1.6.1-cp36-cp36m-manylinux_2_5_i686.manylinux1_i686.whl", hash = "sha256:5b8986b876e8126efe56330ce6f83fdadd7c8d97212697d5475f50094ed520db"},
+    {file = "pyjson5-1.6.1-cp36-cp36m-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl", hash = "sha256:97b8e0cf134fd410d83c7b429e38318d3106956f2c16fa85a661d0631edaa90b"},
+    {file = "pyjson5-1.6.1-cp36-cp36m-manylinux_2_5_x86_64.manylinux1_x86_64.whl", hash = "sha256:cc355fdbe16c27c0873d980c8711ff1d1e44b4e9300237a45b9296a749004af9"},
+    {file = "pyjson5-1.6.1-cp36-cp36m-musllinux_1_1_i686.whl", hash = "sha256:7614fdb7e3c0af3ea55ae7398e8bf78901f295ac4f8c950a79e19a2cc3592244"},
+    {file = "pyjson5-1.6.1-cp36-cp36m-musllinux_1_1_x86_64.whl", hash = "sha256:90dd65d2594eba94fe7bdcf4f1a950d8c6834fe408191bc6f677e14a0cf58d3c"},
+    {file = "pyjson5-1.6.1-cp37-cp37m-macosx_10_9_x86_64.whl", hash = "sha256:2e390683eac94c797b975fa1ec58857ec9efdac67ad47feff6d53d4242ba5f7e"},
+    {file = "pyjson5-1.6.1-cp37-cp37m-manylinux_2_17_x86_64.manylinux2014_x86_64.manylinux_2_24_x86_64.whl", hash = "sha256:7f1b154df76ad4c2230f7c1fd5bf965d0ac53554be2d0a9439b6bd4a4ab9a4fa"},
+    {file = "pyjson5-1.6.1-cp37-cp37m-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:d097562edf5e63e9344d832e2fba2733d5629c7a749b52350ae2be3dba7f87b9"},
+    {file = "pyjson5-1.6.1-cp37-cp37m-manylinux_2_5_i686.manylinux1_i686.manylinux_2_12_i686.manylinux2010_i686.whl", hash = "sha256:d42a1214c9ca9c7a61a8b6b959741549c3ac8549670faf07127c3a444db082ce"},
+    {file = "pyjson5-1.6.1-cp37-cp37m-manylinux_2_5_i686.manylinux1_i686.manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:ddfb3a7570ea28062aed50cfee17989653b3dfa39db094fc8319ef566e94d193"},
+    {file = "pyjson5-1.6.1-cp37-cp37m-manylinux_2_5_i686.manylinux1_i686.manylinux_2_24_i686.whl", hash = "sha256:20b04968b52b4b8c7bfcf6d11189edd008c4e11864b7220933403d104fca98fd"},
+    {file = "pyjson5-1.6.1-cp37-cp37m-manylinux_2_5_i686.manylinux1_i686.whl", hash = "sha256:01faa127f77400fecf0ca4a87889d144e4e440267b42a69b050de45d92332046"},
+    {file = "pyjson5-1.6.1-cp37-cp37m-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl", hash = "sha256:14afe14febaa0389b1d1fb4d506f4edbd94a89fe3ef9d8d57147f3933d8a922d"},
+    {file = "pyjson5-1.6.1-cp37-cp37m-manylinux_2_5_x86_64.manylinux1_x86_64.whl", hash = "sha256:dfe0a486ed989e2d320087441f738f7c9451e80ef17432ff32e761dc7f9d61df"},
+    {file = "pyjson5-1.6.1-cp37-cp37m-musllinux_1_1_i686.whl", hash = "sha256:ef75d1985ed1e8b9bb18c95ce0ed6c7f8c681b097b936591307ac14b18061dc3"},
+    {file = "pyjson5-1.6.1-cp37-cp37m-musllinux_1_1_x86_64.whl", hash = "sha256:27817c5940d7c310fe8b165c31f960527324088aff9910b8c3a8c01700309f04"},
+    {file = "pyjson5-1.6.1-cp37-cp37m-win_amd64.whl", hash = "sha256:4c419eb2a3aae1a315f115336389edcb657a62819a1c21211e15f4ba249da3dc"},
+    {file = "pyjson5-1.6.1-cp38-cp38-macosx_10_9_x86_64.whl", hash = "sha256:6f11343a11b0956091ea0c45653f503aa478f9b0e45c070c2dc76995f0e60b0d"},
+    {file = "pyjson5-1.6.1-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.manylinux_2_24_x86_64.whl", hash = "sha256:1b83080dfc46b7940ec0f7e8c82302044a494980a0c262495ec0c1e570307689"},
+    {file = "pyjson5-1.6.1-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:a2b8cf706ada5b73a8fb316fe31980a03a37b98e47d7fd3dce9330822d5f1ced"},
+    {file = "pyjson5-1.6.1-cp38-cp38-manylinux_2_5_i686.manylinux1_i686.manylinux_2_12_i686.manylinux2010_i686.whl", hash = "sha256:eea5daa46f4698237cf78d2732a7fd73cbfe076846720304c32978e9824261c4"},
+    {file = "pyjson5-1.6.1-cp38-cp38-manylinux_2_5_i686.manylinux1_i686.manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:aa8cc005a295f1100609374ea6a4b8e1fd7fd9280d6708b7d0744bc6d105451d"},
+    {file = "pyjson5-1.6.1-cp38-cp38-manylinux_2_5_i686.manylinux1_i686.manylinux_2_24_i686.whl", hash = "sha256:85f603fb2763454d07bebc523bf5a1fecc38cc560e8a2df3b1f23041beea724d"},
+    {file = "pyjson5-1.6.1-cp38-cp38-manylinux_2_5_i686.manylinux1_i686.whl", hash = "sha256:4f82102cc50fd88ff354d0acc7c856dcd49736174efd7d45cd2a2977e784dea7"},
+    {file = "pyjson5-1.6.1-cp38-cp38-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl", hash = "sha256:a98a5c36e0fc9dba71d5ff6e8bc6ed0ef4a533b562f18c3b867ad9d6e30f7f97"},
+    {file = "pyjson5-1.6.1-cp38-cp38-manylinux_2_5_x86_64.manylinux1_x86_64.whl", hash = "sha256:68e3f455552d183f766348ef6a7e253f476784ea5eee8b00f44ccf6568c92277"},
+    {file = "pyjson5-1.6.1-cp38-cp38-musllinux_1_1_i686.whl", hash = "sha256:050d82bbc27fbfbfac6be13378cf5299912bdf7eb4b4d6c6af30034b17d0ab50"},
+    {file = "pyjson5-1.6.1-cp38-cp38-musllinux_1_1_x86_64.whl", hash = "sha256:494a8208d7fd939397928ffd626eaf79f29f306505facf8ce28e54992a31257d"},
+    {file = "pyjson5-1.6.1-cp38-cp38-win_amd64.whl", hash = "sha256:77314e8771f9d2c4db7daf0646d83a76b50b81111064c9695bef4a2be23452bd"},
+    {file = "pyjson5-1.6.1-cp39-cp39-macosx_10_9_x86_64.whl", hash = "sha256:b185fff3cb9ff6584201f452f6b26ee71c70991db780188e5cfe09198fc90019"},
+    {file = "pyjson5-1.6.1-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.manylinux_2_24_x86_64.whl", hash = "sha256:53986b5837cb38bba3932be1e337b5c4133072635715710850942162a358755b"},
+    {file = "pyjson5-1.6.1-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:d2682f8d787846629afcfe6b1659e6cc21fbae7f94ae35090af2886544c595bd"},
+    {file = "pyjson5-1.6.1-cp39-cp39-manylinux_2_5_i686.manylinux1_i686.manylinux_2_12_i686.manylinux2010_i686.whl", hash = "sha256:3801a2e34754fa71b9dfb9a29e8e361dbf16d882d3f60ffa678d1cd2171bb2af"},
+    {file = "pyjson5-1.6.1-cp39-cp39-manylinux_2_5_i686.manylinux1_i686.manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:ede84ef3d4b87c7fb8c913228f0fcbdf150d2a4ff89502613adba978a04ce6de"},
+    {file = "pyjson5-1.6.1-cp39-cp39-manylinux_2_5_i686.manylinux1_i686.manylinux_2_24_i686.whl", hash = "sha256:3bf3fecbcb335b414a68eca0cec8aa1edf2ba8119d6339a79052857c6d66784d"},
+    {file = "pyjson5-1.6.1-cp39-cp39-manylinux_2_5_i686.manylinux1_i686.whl", hash = "sha256:e3d9fd688bd83ab0c1132b88ce6a711608fc150e3a7174701f79c898fa2d6b90"},
+    {file = "pyjson5-1.6.1-cp39-cp39-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl", hash = "sha256:4bce9f97133e2e602bdfad688ed459e1b0ffc1199cfee16f9f5a52ffaa292778"},
+    {file = "pyjson5-1.6.1-cp39-cp39-manylinux_2_5_x86_64.manylinux1_x86_64.whl", hash = "sha256:a87855a3fc6a60ecdf6c4c949b3f47850caaa4de4e389ce412f658926eee2410"},
+    {file = "pyjson5-1.6.1-cp39-cp39-musllinux_1_1_i686.whl", hash = "sha256:1cf0686cd460179360ccc3424b1e3f8f0e531271669039225d6aa6f77c3aba90"},
+    {file = "pyjson5-1.6.1-cp39-cp39-musllinux_1_1_x86_64.whl", hash = "sha256:45cf21f2ace7d54e9135e224d617332b4f9155bd058414c06099c246fdb4fc09"},
+    {file = "pyjson5-1.6.1-cp39-cp39-win_amd64.whl", hash = "sha256:c63d84c4d28892d3aae31790999b70e87c0c47cfb7e44186aa84bcda8d6ec386"},
+    {file = "pyjson5-1.6.1-pp37-pypy37_pp73-manylinux_2_17_x86_64.manylinux2014_x86_64.manylinux_2_24_x86_64.whl", hash = "sha256:042a90e194edc2eaae5c8cd3cdc500023cd825f176f39494d5783b0feaf63183"},
+    {file = "pyjson5-1.6.1-pp37-pypy37_pp73-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:9b285be1010203cc4d687ad9d62ec01306d2c5cc1102c57e4fc9c9ea5cb59d7b"},
+    {file = "pyjson5-1.6.1-pp37-pypy37_pp73-manylinux_2_5_i686.manylinux1_i686.manylinux_2_12_i686.manylinux2010_i686.whl", hash = "sha256:50bf165ca54d0ccdc060f19f7c22270b3a5c2fa98100be51b754219e67b758e8"},
+    {file = "pyjson5-1.6.1-pp37-pypy37_pp73-manylinux_2_5_i686.manylinux1_i686.manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:87eadeae577f118c0db68b169d86a2372279f50174a45b4df3f8ef4186440706"},
+    {file = "pyjson5-1.6.1-pp37-pypy37_pp73-manylinux_2_5_i686.manylinux1_i686.manylinux_2_24_i686.whl", hash = "sha256:000f7777f300020eee3f85e99f49a51b00008d99827b0e1a728dd9e89df54d5d"},
+    {file = "pyjson5-1.6.1-pp37-pypy37_pp73-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl", hash = "sha256:a9646eae3b43ff3914ed6eb7a1ce81f3529a3e73abcc508581825bd8fd1079ce"},
+    {file = "pyjson5-1.6.1.tar.gz", hash = "sha256:8c78ce75423059becbad4d2b8267d930eda5f68c5e99b11ab523c29552c639fc"},
 ]
 pylint = [
     {file = "pylint-2.12.2-py3-none-any.whl", hash = "sha256:daabda3f7ed9d1c60f52d563b1b854632fd90035bcf01443e234d3dc794e3b74"},
