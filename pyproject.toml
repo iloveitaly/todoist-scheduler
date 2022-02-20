@@ -7,6 +7,8 @@ authors = ["Michael Bianco <iloveitaly@gmail.com>"]
 [tool.poetry.dependencies]
 python = "^3.8"
 todoist-api-python = "^1.1.0"
+click = "^8.0.3"
+python-dotenv = "^0.19.2"
 
 [tool.poetry.dev-dependencies]
 ipython = "^8.0.1"
@@ -17,6 +19,7 @@ pylint = "^2.12.2"
 isort = "^5.10.1"
 rich = "^11.1.0"
 docrepr = "^0.2.0"
+# try out pdbr https://github.com/cansarigol/pdbr
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
