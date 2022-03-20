@@ -6,7 +6,7 @@ authors = ["Michael Bianco <iloveitaly@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
-todoist-api-python = "^1.1.0"
+todoist-api-python = "^1.1.1"
 click = "^8.0.3"
 python-dotenv = "^0.19.2"
 pyjson5 = "^1.6.1"
