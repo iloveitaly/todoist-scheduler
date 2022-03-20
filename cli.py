@@ -12,6 +12,7 @@ load_dotenv()
 @click.option("--task-limit", default=20, help="Total task limit for the day", show_default=True, type=int)
 @click.option("--default-filter", default="(today | overdue) & !assigned to:others & !recurring", help="Default todoist filter", show_default=True, type=str)
 @click.option("--filter-json", default="filters.json", help="Default todoist filter", show_default=True, type=str)
+@click.option("--punt-time", default="in 2 days", help="Default time to punt a task into the future", show_default=True, type=str)
 @click.option("--dry-run", default=False, help="Dry run the task updates", show_default=True, type=bool, is_flag=True)
 @click.option("--api-key", default=None, help="API key. Sourced from TODOIST_API_KEY as well")
 def cli(**kwargs):

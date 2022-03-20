@@ -8,19 +8,8 @@ IPython.core.crashhandler.crash_handler_lite = lambda one, two, three: None
 # from rich.pretty import pprint
 # how can I make this the default printer?
 
-# example rules json:
-# rules = [
-#     {
-#         'filter': '@research',
-#         'limit': 3
-#     },
-#     {
-#         'filter': '#Networking',
-#         'limit': 2
-#     }
-# ]
-
 import random
+import datetime
 import logging, os, sys
 logger = logging.getLogger(__name__)
 logging.basicConfig(datefmt='%m-%d %H:%M', format='%(asctime)s %(levelname)-8s %(message)s')
@@ -30,19 +19,25 @@ logging.basicConfig(datefmt='%m-%d %H:%M', format='%(asctime)s %(levelname)-8s %
 log_level = os.environ.get("LOG_LEVEL", "INFO")
 logger.setLevel(getattr(logging, log_level.upper(), logging.INFO))
 
-def apply_todoist_filters(task_limit, api_key, rules, dry_run, default_filter):
+def apply_todoist_filters(task_limit, api_key, rules, dry_run, punt_time, default_filter):
     api = TodoistAPI(api_key)
 
     if not default_filter:
         default_filter = "(today | overdue) & !assigned to:others & !recurring"
 
-    labels = api.get_labels()
+    if not punt_time:
+        punt_time = "in 2 days"
 
-    # tasks = api.get_tasks(filter=default_filter)
+    day_of_the_week = datetime.date.today().weekday()
 
-    import datetime
-    # if sunday (day off) force all non-essenltial tasks to zero
-    is_sunday = datetime.date.today().weekday() == 6
+    is_saturday = day_of_the_week == 5
+
+    if is_saturday:
+        logger.info("it's saturday, leaving all tasks so you can review")
+        return
+
+    # if sunday (day off) force all non-essential tasks to zero
+    is_sunday = day_of_the_week == 6
 
     for rule in rules:
         filter_with_label = f'{default_filter} & {rule["filter"]}'
@@ -68,7 +63,7 @@ def apply_todoist_filters(task_limit, api_key, rules, dry_run, default_filter):
                 logger.info("punting task %s", low_priority_task.content)
 
                 if not dry_run:
-                    api.update_task(low_priority_task.id, due_string="tomorrow")
+                    api.update_task(low_priority_task.id, due_string=punt_time)
             else:
                 logger.debug("leaving task %s", low_priority_task.content)
                 remaining_tasks -= 1
