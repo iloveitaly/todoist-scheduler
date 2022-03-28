@@ -8,7 +8,7 @@ authors = ["Michael Bianco <iloveitaly@gmail.com>"]
 python = "^3.8"
 todoist-api-python = "^1.1.1"
 click = "^8.0.4"
-python-dotenv = "^0.19.2"
+python-dotenv = "^0.20.0"
 pyjson5 = "^1.6.1"
 
 [tool.poetry.dev-dependencies]
