@@ -18,7 +18,7 @@ colorama = "^0.4.4"
 black = "^22.3.0"
 pylint = "^2.12.2"
 isort = "^5.10.1"
-rich = "^12.4.1"
+rich = "^12.4.4"
 docrepr = "^0.2.0"
 # try out pdbr https://github.com/cansarigol/pdbr
 
