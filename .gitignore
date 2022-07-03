@@ -1,4 +1,5 @@
 .env
+.envrc
 __pycache__
 TODO
 filters.json
