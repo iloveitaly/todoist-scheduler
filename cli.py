@@ -52,6 +52,9 @@ def cli(**kwargs):
     if not kwargs["api_key"]:
         kwargs["api_key"] = os.getenv("TODOIST_API_KEY")
 
+    if not kwargs["api_key"]:
+        raise click.ClickException("No API key found")
+
     with open(kwargs["filter_json"]) as f:
         kwargs["rules"] = json.load(f)
 
