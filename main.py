@@ -37,12 +37,6 @@ def apply_todoist_filters(
 
     day_of_the_week = datetime.date.today().weekday()
 
-    is_saturday = day_of_the_week == 5
-
-    if is_saturday:
-        logger.info("it's saturday, leaving all tasks so you can review")
-        return
-
     # if sunday (day off) force all non-essential tasks to zero
     is_sunday = day_of_the_week == 6
 
