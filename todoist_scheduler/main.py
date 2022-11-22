@@ -1,17 +1,17 @@
 from todoist_api_python.api import TodoistAPI
 
-# TODO document this as a way to cleanup ipython backtraces
+# cleanup ugly ipython backtraces
 # https://cs.github.com/ipython/ipython/blob/46a51ed69cdf41b4333943d9ceeb945c4ede5668/IPython/core/crashhandler.py#L225
 import IPython.core.crashhandler
 
 IPython.core.crashhandler.crash_handler_lite = lambda one, two, three: None
 
 # from rich.pretty import pprint
-# how can I make this the default printer?
+# TODO how can I make this the default printer?
 
 import random
 import datetime
-import logging, os, sys
+import logging, os
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(

@@ -4,7 +4,7 @@ import click
 from dotenv import load_dotenv
 import pyjson5 as json  # allows comments in json
 
-from .main import apply_todoist_filters
+from todoist_scheduler import main
 
 load_dotenv()
 
