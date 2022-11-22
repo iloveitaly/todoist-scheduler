@@ -3,7 +3,8 @@ import os
 import click
 from dotenv import load_dotenv
 import pyjson5 as json  # allows comments in json
-import main
+
+from .main import apply_todoist_filters
 
 load_dotenv()
 
