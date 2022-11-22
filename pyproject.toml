@@ -14,7 +14,7 @@ pyjson5 = "^1.6.1"
 [tool.poetry.dev-dependencies]
 ipython = "^8.5.0"
 ipdb = "^0.13.9"
-colorama = "^0.4.5"
+colorama = "^0.4.6"
 black = "^22.8.0"
 pylint = "^2.15.0"
 isort = "^5.10.1"
