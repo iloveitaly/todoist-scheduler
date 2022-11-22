@@ -2,7 +2,7 @@
 
 I've been experimenting with my productivity systems. I'm a heavy user of [Todoist](http://mikebian.co/todoist) and I noticed that:
 
-1. If I have a smaller list of tasks to acomplish, I get through them faster.
+1. If I have a smaller list of tasks to accomplish, I get through them faster.
 2. Having a large list of tasks creates 'cognitive drag' and stresses me out
 3. It takes time to look through and review long list of tasks
 
@@ -11,7 +11,7 @@ This simple tool enables you to set up rules to automatically punt tasks that do
 ## Usage
 
 ```
-Usage: cli.py [OPTIONS]
+Usage: todoist-scheduler [OPTIONS]
 
   Organizes todoist tasks based on custom rules
 
@@ -20,7 +20,9 @@ Options:
   --default-filter TEXT  Default todoist filter  [default: (today | overdue) &
                          !assigned to:others & !recurring]
   --filter-json TEXT     Default todoist filter  [default: filters.json]
-  --dry-run BOOLEAN      Dry run the task updates  [default: False]
+  --punt-time TEXT       Default time to punt a task into the future
+                         [default: in 2 days]
+  --dry-run              Dry run the task updates
   --api-key TEXT         API key. Sourced from TODOIST_API_KEY as well
   --help                 Show this message and exit.
 ```

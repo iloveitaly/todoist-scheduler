@@ -2,7 +2,7 @@
 name = "todoist-scheduler"
 version = "0.1.0"
 description = ""
-authors = ["Michael Bianco <iloveitaly@gmail.com>"]
+authors = ["Michael Bianco <mike@mikebian.co>"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
@@ -20,7 +20,9 @@ pylint = "^2.15.0"
 isort = "^5.10.1"
 rich = "^12.6.0"
 docrepr = "^0.2.0"
-# try out pdbr https://github.com/cansarigol/pdbr
+
+[tool.poetry.scripts]
+todoist-scheduler = "todoist_scheduler:cli"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
