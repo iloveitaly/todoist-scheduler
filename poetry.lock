@@ -462,14 +462,14 @@ python-versions = "~=3.5"
 
 [[package]]
 name = "pylint"
-version = "2.15.6"
+version = "2.15.7"
 description = "python code static checker"
 category = "dev"
 optional = false
 python-versions = ">=3.7.2"
 
 [package.dependencies]
-astroid = ">=2.12.12,<=2.14.0-dev0"
+astroid = ">=2.12.13,<=2.14.0-dev0"
 colorama = {version = ">=0.4.5", markers = "sys_platform == \"win32\""}
 dill = ">=0.2"
 isort = ">=4.2.5,<6"
@@ -782,7 +782,7 @@ python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,>=2.7"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "10f6b364d8cfd0a7890c1d1ad9bcb24cd500f590d02222f3d0696784d9a6e848"
+content-hash = "e4d4c7267fc73b63bf10bdc8844aa391da2e2cc69c40a156da97c61587055c3e"
 
 [metadata.files]
 alabaster = [
@@ -1140,8 +1140,8 @@ pyjson5 = [
     {file = "pyjson5-1.6.1.tar.gz", hash = "sha256:8c78ce75423059becbad4d2b8267d930eda5f68c5e99b11ab523c29552c639fc"},
 ]
 pylint = [
-    {file = "pylint-2.15.6-py3-none-any.whl", hash = "sha256:15060cc22ed6830a4049cf40bc24977744df2e554d38da1b2657591de5bcd052"},
-    {file = "pylint-2.15.6.tar.gz", hash = "sha256:25b13ddcf5af7d112cf96935e21806c1da60e676f952efb650130f2a4483421c"},
+    {file = "pylint-2.15.7-py3-none-any.whl", hash = "sha256:1d561d1d3e8be9dd880edc685162fbdaa0409c88b9b7400873c0cf345602e326"},
+    {file = "pylint-2.15.7.tar.gz", hash = "sha256:91e4776dbcb4b4d921a3e4b6fec669551107ba11f29d9199154a01622e460a57"},
 ]
 pyparsing = [
     {file = "pyparsing-3.0.7-py3-none-any.whl", hash = "sha256:a6c06a88f252e6c322f65faf8f418b16213b51bdfaece0524c1c1bc30c63c484"},
