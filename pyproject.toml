@@ -5,8 +5,8 @@ description = ""
 authors = ["Michael Bianco <mike@mikebian.co>"]
 
 [tool.poetry.dependencies]
-python = "^3.8"
-todoist-api-python = "^1.1.1"
+python = "^3.10"
+todoist-api-python = "^2"
 click = "^8.1.3"
 python-dotenv = "^0.21.0"
 pyjson5 = "^1.6.2"
