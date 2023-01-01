@@ -17,7 +17,7 @@ ipdb = "^0.13.9"
 colorama = "^0.4.6"
 black = "^22.10.0"
 pylint = "^2.15.7"
-isort = "^5.10.1"
+isort = "^5.11.4"
 rich = "^12.6.0"
 docrepr = "^0.2.0"
 
