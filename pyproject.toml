@@ -18,7 +18,7 @@ colorama = "^0.4.6"
 black = "^22.10.0"
 pylint = "^2.15.7"
 isort = "^5.10.1"
-rich = "^12.6.0"
+rich = "^13.3.1"
 docrepr = "^0.2.0"
 
 [tool.poetry.scripts]
