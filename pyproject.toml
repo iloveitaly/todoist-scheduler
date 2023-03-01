@@ -12,7 +12,7 @@ python-dotenv = "^0.21.0"
 pyjson5 = "^1.6.2"
 
 [tool.poetry.dev-dependencies]
-ipython = "^8.7.0"
+ipython = "^8.11.0"
 ipdb = "^0.13.11"
 colorama = "^0.4.6"
 black = "^22.10.0"
