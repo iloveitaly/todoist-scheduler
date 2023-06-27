@@ -23,10 +23,21 @@ logging.basicConfig(
 log_level = os.environ.get("LOG_LEVEL", "INFO")
 logger.setLevel(getattr(logging, log_level.upper(), logging.INFO))
 
+def is_internet_connected():
+    import socket
+    s = socket.socket(socket.AF_INET)
+    try:
+        s.connect(("google.com",80))
+        return True
+    except socket.error as e: return False
 
 def apply_todoist_filters(
     task_limit, api_key, rules, dry_run, punt_time, default_filter
 ):
+    if not is_internet_connected():
+        print("internet is not connected")
+        return
+
     api = TodoistAPI(api_key)
 
     if not default_filter:
