@@ -4,7 +4,7 @@ name: Build and Publish to PyPI
 on:
   push:
     branches:
-      - main
+      - master
 
 # by default, permissions are read-only, read + write is required for git pushes
 permissions:
