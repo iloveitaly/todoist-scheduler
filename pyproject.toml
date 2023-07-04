@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "todoist-scheduler"
-version = "0.1.0"
+version = "0.2.0"
 description = ""
 authors = ["Michael Bianco <mike@mikebian.co>"]
 license = "MIT"
