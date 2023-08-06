@@ -1,12 +1,9 @@
 import os
 
 import click
-from dotenv import load_dotenv
 import pyjson5 as json  # allows comments in json
 
 from todoist_scheduler import main
-
-load_dotenv()
 
 
 @click.command(help="Organizes todoist tasks based on custom rules")
