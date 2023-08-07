@@ -1,11 +1,5 @@
 from todoist_api_python.api import TodoistAPI
 
-# cleanup ugly ipython backtraces
-# https://cs.github.com/ipython/ipython/blob/46a51ed69cdf41b4333943d9ceeb945c4ede5668/IPython/core/crashhandler.py#L225
-import IPython.core.crashhandler
-
-IPython.core.crashhandler.crash_handler_lite = lambda one, two, three: None
-
 import random
 import datetime
 import logging, os
@@ -38,59 +32,76 @@ def _random_date_in_next_days(days=14):
     random_day = random.randrange(days_delta.days)
     return today + datetime.timedelta(days=random_day)
 
+def _get_all_filters(api):
+    response = api.sync_read_resources(resource_types=["filters"])
+    return {filter["name"]: filter["query"] for filter in response["filters"]}
+
 def apply_todoist_filters(
-    task_limit, api_key, rules, dry_run, punt_time, default_filter
+    api_key, rules, task_limit, default_filter, **kwargs
 ):
     if not _is_internet_connected():
         print("internet is not connected")
         return
 
-    # defaults are applied here in case None values are passed to the kwargs from click
-
-    if not default_filter:
-        default_filter = "(today | overdue) & !assigned to:others & !recurring"
-
-    if not punt_time:
-        punt_time = "in 2 days"
-
     api = TodoistAPI(api_key)
-    is_sunday = _is_sunday()
+    system_filters = _get_all_filters(api)
 
     for rule in rules:
-        filter_with_label = f'{default_filter} & {rule["filter"]}'
-        logger.debug(filter_with_label)
-
-        tasks_with_label = api.get_tasks(filter=filter_with_label)
-
-        # only reschedule low priority tasks; the API priorities are opposite from UI priorities
-        # `Task priority from 1 (normal, default value) to 4 (urgent)`
-        low_priority_tasks = [task for task in tasks_with_label if task.priority == 1]
-
-        # randomize the task order so different tasks are displayed for completion each day
-        random.shuffle(low_priority_tasks)
-
-        # TODO should allow this to be customized
-        # if sunday (day off) force limit of all non-essential tasks to zero
-        limit_for_filter = 0 if is_sunday else rule["limit"]
-
-        # after excluding the high-pri tasks, how many slots do we have left for this rule?
-        remaining_tasks = limit_for_filter - (
-            len(tasks_with_label) - len(low_priority_tasks)
-        )
-        logger.debug(f"{remaining_tasks} tasks remaining for {rule['filter']}")
-
-        for low_priority_task in low_priority_tasks:
-            if remaining_tasks <= 0:
-                logger.info("punting task %s", low_priority_task.content)
-
-                if not dry_run:
-                    api.update_task(low_priority_task.id, due_string=punt_time)
-            else:
-                logger.debug("leaving task %s", low_priority_task.content)
-                remaining_tasks -= 1
+        process_rule(api=api, rule=rule, default_filter=default_filter, system_filters=system_filters, **kwargs)
 
     all_remaining_tasks = api.get_tasks(filter=default_filter)
 
     # let the user know they should incrementally improve their categorization so there's a reasonable number of tasks left
     if len(all_remaining_tasks) > task_limit:
         logger.warn("many remaining tasks left, improve filtering")
+
+
+def process_rule(api, rule, dry_run, default_filter, system_filters, punt_time, jitter_days):
+    filter_with_label = f'{default_filter} & {rule["filter"]}'
+
+    if rule["filter"] in system_filters:
+        logger.debug("using system filter %s", rule["filter"])
+        filter_with_label = f'{default_filter} & {system_filters[rule["filter"]]}'
+
+    logger.debug(filter_with_label)
+
+    tasks_with_label = api.get_tasks(filter=filter_with_label)
+
+    # TODO should allow to be specified via CLI
+    priority = 1
+
+    # allow JSON to overwrite rules
+    if "dry_run" in rule:
+        dry_run = rule["dry_run"]
+    if "punt_time" in rule:
+        punt_time = rule["punt_time"]
+    if "jitter_days" in rule:
+        jitter_days = rule["jitter_days"]
+    if "priority" in rule:
+        priority = rule["priority"]
+
+    # only reschedule low priority tasks; the API priorities are opposite from UI priorities
+    # `Task priority from 1 (normal, default value) to 4 (urgent)`
+    low_priority_tasks = [task for task in tasks_with_label if task.priority <= priority]
+
+    # randomize the task order so different tasks are displayed for completion each day
+    random.shuffle(low_priority_tasks)
+
+    # if sunday (day off) force limit of all non-essential tasks to zero
+    limit_for_filter = 0 if _is_sunday() else rule["limit"]
+
+    # after excluding the high-pri tasks, how many slots do we have left for this rule?
+    remaining_tasks = limit_for_filter - (
+        len(tasks_with_label) - len(low_priority_tasks)
+    )
+    logger.debug(f"{remaining_tasks} tasks remaining for {rule['filter']}")
+
+    for low_priority_task in low_priority_tasks:
+        if remaining_tasks <= 0:
+            logger.info("punting task %s", low_priority_task.content)
+
+            if not dry_run:
+                api.update_task(low_priority_task.id, due_string=punt_time)
+        else:
+            logger.debug("leaving task %s", low_priority_task.content)
+            remaining_tasks -= 1

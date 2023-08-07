@@ -24,16 +24,23 @@ from todoist_scheduler import main
 @click.option(
     "--filter-json",
     default="filters.json",
-    help="Default todoist filter",
+    help="Default filter file",
     show_default=True,
     type=str,
 )
 @click.option(
     "--punt-time",
     default="in 2 days",
-    help="Default time to punt a task into the future",
+    help="How far to punt a task into the future. Use todoist natural language format. The special value 'jitter' will generate a random date.",
     show_default=True,
     type=str,
+)
+@click.option(
+    "--jitter-days",
+    default="14",
+    help="What day range to jitter tasks across when rescheduling them",
+    show_default=True,
+    type=int,
 )
 @click.option(
     "--dry-run",
