@@ -26,11 +26,13 @@ def _is_sunday():
     day_of_the_week = datetime.date.today().weekday()
     return day_of_the_week == 6
 
-def _random_date_in_next_days(days=14):
-    today = datetime.date.today()
-    days_delta = datetime.timedelta(days=days)
-    random_day = random.randrange(days_delta.days)
-    return today + datetime.timedelta(days=random_day)
+# TODO is this really needed given that this should run every day?
+def _due_string(punt_time, jitter_days):
+    if punt_time != "jitter":
+        return punt_time
+
+    random_days = random.randrange(jitter_days)
+    return f"in {random_days} days"
 
 def _get_all_filters(api):
     response = api.sync_read_resources(resource_types=["filters"])
@@ -54,7 +56,6 @@ def apply_todoist_filters(
     # let the user know they should incrementally improve their categorization so there's a reasonable number of tasks left
     if len(all_remaining_tasks) > task_limit:
         logger.warn("many remaining tasks left, improve filtering")
-
 
 def process_rule(api, rule, dry_run, default_filter, system_filters, punt_time, jitter_days):
     filter_with_label = f'{default_filter} & {rule["filter"]}'
@@ -98,10 +99,11 @@ def process_rule(api, rule, dry_run, default_filter, system_filters, punt_time, 
 
     for low_priority_task in low_priority_tasks:
         if remaining_tasks <= 0:
-            logger.info("punting task %s", low_priority_task.content)
+            due_string = _due_string(punt_time, jitter_days)
+            logger.info("punting task %s %s", low_priority_task.content, due_string)
 
             if not dry_run:
-                api.update_task(low_priority_task.id, due_string=punt_time)
+                api.update_task(low_priority_task.id, due_string=due_string)
         else:
             logger.debug("leaving task %s", low_priority_task.content)
             remaining_tasks -= 1
