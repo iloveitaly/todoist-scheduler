@@ -20,24 +20,6 @@ wrapt = [
 ]
 
 [[package]]
-name = "attrs"
-version = "22.2.0"
-description = "Classes Without Boilerplate"
-optional = false
-python-versions = ">=3.6"
-files = [
-    {file = "attrs-22.2.0-py3-none-any.whl", hash = "sha256:29e95c7f6778868dbd49170f98f8818f78f3dc5e0e37c0b1f474e3561b240836"},
-    {file = "attrs-22.2.0.tar.gz", hash = "sha256:c9227bfc2f01993c03f68db37d1d15c9690188323c067c641f1a35ca58185f99"},
-]
-
-[package.extras]
-cov = ["attrs[tests]", "coverage-enable-subprocess", "coverage[toml] (>=5.3)"]
-dev = ["attrs[docs,tests]"]
-docs = ["furo", "myst-parser", "sphinx", "sphinx-notfound-page", "sphinxcontrib-towncrier", "towncrier", "zope.interface"]
-tests = ["attrs[tests-no-zope]", "zope.interface"]
-tests-no-zope = ["cloudpickle", "cloudpickle", "hypothesis", "hypothesis", "mypy (>=0.971,<0.990)", "mypy (>=0.971,<0.990)", "pympler", "pympler", "pytest (>=4.3.0)", "pytest (>=4.3.0)", "pytest-mypy-plugins", "pytest-mypy-plugins", "pytest-xdist[psutil]", "pytest-xdist[psutil]"]
-
-[[package]]
 name = "black"
 version = "23.7.0"
 description = "The uncompromising code formatter."
@@ -544,15 +526,18 @@ name = "todoist-api-python"
 version = "2.0.2"
 description = "Official Python SDK for the Todoist REST API."
 optional = false
-python-versions = ">=3.9,<4.0"
-files = [
-    {file = "todoist_api_python-2.0.2-py3-none-any.whl", hash = "sha256:af52cbc8f183dff79d22929dbab75e1d840da3e10e0571e8ff84e8fc74d6fcf8"},
-    {file = "todoist_api_python-2.0.2.tar.gz", hash = "sha256:ec8567649e35c244a44608b5e0c125aabf9e567c0f2df55959af39024a856e25"},
-]
+python-versions = "^3.9"
+files = []
+develop = false
 
 [package.dependencies]
-attrs = ">=22.0.0,<23.0.0"
-requests = ">=2.26.0,<3.0.0"
+requests = "^2.26.0"
+
+[package.source]
+type = "git"
+url = "https://github.com/iloveitaly/todoist-api-python.git"
+reference = "sync-api"
+resolved_reference = "ec83531fae94a2ccd0a4bd6b2d1db95d86b129b6"
 
 [[package]]
 name = "tomli"
@@ -691,4 +676,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "2cb166e3118a21492e28b03686b5e8fca7152a49d245ab78684de03e5fbdb5a8"
+content-hash = "56f01bba1f9f0a05f9e4dad683beb91c71c1ddf0991fce621f94111a12b4ab0d"
