@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "todoist-scheduler"
-version = "0.2.0"
+version = "0.3.0"
 description = "Automatically reschedule tasks in Todoist to reduce the size of the todo lists you see each day."
 authors = ["Michael Bianco <mike@mikebian.co>"]
 license = "MIT"
