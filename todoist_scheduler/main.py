@@ -14,17 +14,21 @@ logging.basicConfig(
 log_level = os.environ.get("LOG_LEVEL", "INFO")
 logger.setLevel(getattr(logging, log_level.upper(), logging.INFO))
 
+
 def _is_internet_connected():
     import socket
-    s = socket.socket(socket.AF_INET)
+
     try:
-        s.connect(("google.com",80))
-        return True
-    except socket.error as e: return False
+        with socket.create_connection(("google.com", 80), timeout=5):
+            return True
+    except socket.error as e:
+        return False
+
 
 def _is_sunday():
     day_of_the_week = datetime.date.today().weekday()
     return day_of_the_week == 6
+
 
 # TODO is this really needed given that this should run every day?
 def _due_string(punt_time, jitter_days):
@@ -34,13 +38,13 @@ def _due_string(punt_time, jitter_days):
     random_days = random.randrange(jitter_days)
     return f"in {random_days} days"
 
+
 def _get_all_filters(api):
     response = api.sync_read_resources(resource_types=["filters"])
     return {filter["name"]: filter["query"] for filter in response["filters"]}
 
-def apply_todoist_filters(
-    api_key, rules, task_limit, default_filter, **kwargs
-):
+
+def apply_todoist_filters(api_key, rules, task_limit, default_filter, **kwargs):
     if not _is_internet_connected():
         print("internet is not connected")
         return
@@ -49,7 +53,13 @@ def apply_todoist_filters(
     system_filters = _get_all_filters(api)
 
     for rule in rules:
-        process_rule(api=api, rule=rule, default_filter=default_filter, system_filters=system_filters, **kwargs)
+        process_rule(
+            api=api,
+            rule=rule,
+            default_filter=default_filter,
+            system_filters=system_filters,
+            **kwargs,
+        )
 
     all_remaining_tasks = api.get_tasks(filter=default_filter)
 
@@ -57,7 +67,10 @@ def apply_todoist_filters(
     if len(all_remaining_tasks) > task_limit:
         logger.warn("many remaining tasks left, improve filtering")
 
-def process_rule(api, rule, dry_run, default_filter, system_filters, punt_time, jitter_days):
+
+def process_rule(
+    api, rule, dry_run, default_filter, system_filters, punt_time, jitter_days
+):
     filter_with_label = f'{default_filter} & {rule["filter"]}'
 
     if rule["filter"] in system_filters:
@@ -83,7 +96,9 @@ def process_rule(api, rule, dry_run, default_filter, system_filters, punt_time, 
 
     # only reschedule low priority tasks; the API priorities are opposite from UI priorities
     # `Task priority from 1 (normal, default value) to 4 (urgent)`
-    low_priority_tasks = [task for task in tasks_with_label if task.priority <= priority]
+    low_priority_tasks = [
+        task for task in tasks_with_label if task.priority <= priority
+    ]
 
     # randomize the task order so different tasks are displayed for completion each day
     random.shuffle(low_priority_tasks)
