@@ -44,7 +44,7 @@ Here's what this does:
 
 #### filters.json schema
 
-```json
+```json5
 [
   // limit defines the number of tasks you think you can complete today
   { "filter": "@writing", "limit": 2 },
@@ -59,7 +59,7 @@ The JSON file is loaded in as [JSON5](https://json5.org) so you can add comments
 
 You can also override options for specific entries and reference saved/named filters:
 
-```json
+```json5
 [
   // loosen the priority filter
   { "filter": "@writing", "limit": 2, "priority": 2 },
