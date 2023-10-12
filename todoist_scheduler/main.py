@@ -39,8 +39,22 @@ def _due_string(punt_time, jitter_days):
     return f"in {random_days} days"
 
 
+# https://github.com/iloveitaly/todoist-api-python/commit/ec83531fae94a2ccd0a4bd6b2d1db95d86b129b6
+def todoist_get_filters(api):
+    from todoist_api_python.endpoints import get_sync_url
+    from todoist_api_python.http_requests import post
+
+    endpoint = get_sync_url("sync")
+    data = {
+        "resource_types": ["filters"],
+        "sync_token": "*",
+    }
+    resource_data = post(api._session, endpoint, api._token, data=data)
+    return resource_data
+
+
 def _get_all_filters(api):
-    response = api.sync_read_resources(resource_types=["filters"])
+    response = todoist_get_filters(api)
     return {filter["name"]: filter["query"] for filter in response["filters"]}
 
 
@@ -65,7 +79,7 @@ def apply_todoist_filters(api_key, rules, task_limit, default_filter, **kwargs):
 
     # let the user know they should incrementally improve their categorization so there's a reasonable number of tasks left
     if len(all_remaining_tasks) > task_limit:
-        logger.warn("many remaining tasks left, improve filtering")
+        logger.warning("many remaining tasks left, improve filtering")
 
 
 def process_rule(
