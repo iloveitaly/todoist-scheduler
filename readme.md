@@ -4,7 +4,7 @@
 
 I'm a heavy user of [Todoist](http://mikebian.co/todoist) and I noticed that:
 
-1. If I have a smaller list of tasks to accomplish, I get through them faster.
+1. If I have [a smaller list of tasks to accomplish](https://mikebian.co/improve-motivation-and-focus-with-small-contexts/), I get through them faster.
 2. Having a large list of tasks creates 'cognitive drag' and stresses me out
 3. It takes time to look through and review long list of tasks
 
