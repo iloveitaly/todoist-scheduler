@@ -1,4 +1,6 @@
-# Todoist Task Scheduler & Filterer [![Release Notes](https://img.shields.io/github/release/iloveitaly/todoist-scheduler)](https://github.com/iloveitaly/todoist-scheduler/releases) [![Downloads](https://static.pepy.tech/badge/todoist-scheduler/month)](https://pepy.tech/project/todoist-scheduler) [![Python Versions](https://img.shields.io/pypi/pyversions/todoist-scheduler)](https://pypi.org/project/todoist-scheduler) ![GitHub CI Status](https://github.com/iloveitaly/todoist-scheduler/actions/workflows/build_and_publish.yml/badge.svg) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Release Notes](https://img.shields.io/github/release/iloveitaly/todoist-scheduler)](https://github.com/iloveitaly/todoist-scheduler/releases) [![Downloads](https://static.pepy.tech/badge/todoist-scheduler/month)](https://pepy.tech/project/todoist-scheduler) [![Python Versions](https://img.shields.io/pypi/pyversions/todoist-scheduler)](https://pypi.org/project/todoist-scheduler) ![GitHub CI Status](https://github.com/iloveitaly/todoist-scheduler/actions/workflows/build_and_publish.yml/badge.svg) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+# Todoist Task Scheduler & Filterer
 
 I'm a heavy user of [Todoist](http://mikebian.co/todoist) and I noticed that:
 
