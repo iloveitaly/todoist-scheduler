@@ -1,6 +1,6 @@
 # .github/workflows/build_and_publish.yml
 
-name: Build and Publish to PyPI
+name: CI
 on:
   push:
     branches:
