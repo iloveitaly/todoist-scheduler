@@ -1,3 +1,12 @@
+## [0.3.2](https://github.com/iloveitaly/todoist-scheduler/compare/v0.3.1...v0.3.2) (2023-10-12)
+
+
+### Bug Fixes
+
+* inline todoist api change that isn't going to happen ([f964269](https://github.com/iloveitaly/todoist-scheduler/commit/f9642698774f274df95ae0819f1ecbc8fcd24557))
+
+
+
 ## [0.3.1](https://github.com/iloveitaly/todoist-scheduler/compare/v0.3.0...v0.3.1) (2023-08-21)
 
 
