@@ -8,7 +8,9 @@ I'm a heavy user of [Todoist](http://mikebian.co/todoist) and I noticed that:
 2. Having a large list of tasks creates 'cognitive drag' and stresses me out
 3. It takes time to look through and review long list of tasks
 
-This simple tool enables you to set up rules to automatically punt tasks that don't need to get done today. This reduces the size of your todoist and tricks you monkey mind into getting more done. The ultimate goal for me is to get to 'inbox zero' on todoist which is something that hasn't happened in years.
+This tool enables you to set up rules to automatically punt tasks that don't need to get done today. This reduces the size of your todoist lists and tricks your monkey mind into getting more done. The ultimate goal for me is to get to 'inbox zero' on todoist.
+
+This tool has helped in a big way, acting as a 'virtual assistant' in a way: automatically determining what I shouldn't see for the day. I tie this into a 'first awake' script executed by [hyper focus](https://mikebian.co/hyper-focus).
 
 ## Usage
 
