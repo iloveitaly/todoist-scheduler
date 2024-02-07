@@ -73,6 +73,10 @@ You can also override options for specific entries and reference saved/named fil
 ]
 ```
 
+### Docker
+
+Easiest way to use this is using the pre-built docker image. Here's an example [docker-compose.yml](/docker-compose.yml)
+
 ## Development
 
 Run with debug logging:
