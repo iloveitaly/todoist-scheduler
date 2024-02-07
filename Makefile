@@ -1,8 +1,8 @@
 .PHONY: build build-debug docker-push
 
-IMAGE_NAME ?= $(shell gh repo view --json name --jq '.name' | tr -d '[:space:]')
+IMAGE_NAME ?= ghcr.io/$(shell gh repo view --json nameWithOwner --jq '.nameWithOwner' | tr -d '[:space:]')
 IMAGE_TAG ?= latest
-GITHUB_REPOSITORY ?= ghcr.io/$(shell gh repo view --json nameWithOwner --jq '.nameWithOwner' | tr -d '[:space:]')
+GITHUB_REPOSITORY ?= $(shell gh repo view --json nameWithOwner --jq '.nameWithOwner' | tr -d '[:space:]')
 
 # NOTE this requires a custom nixpacks build to work:
 # 		 https://github.com/railwayapp/nixpacks/pulls?q=is%3Apr+author%3Ailoveitaly
