@@ -26,7 +26,7 @@ from todoist_scheduler import main
     default="filters.json",
     help="Default filter file",
     show_default=True,
-    type=str,
+    type=click.Path(exists=True),
 )
 @click.option(
     "--punt-time",
@@ -51,12 +51,11 @@ from todoist_scheduler import main
     is_flag=True,
 )
 @click.option(
-    "--api-key", default=None, help="API key. Sourced from TODOIST_API_KEY as well"
+    "--api-key",
+    default=os.getenv("TODOIST_API_KEY"),
+    help="API key. Sourced from TODOIST_API_KEY too.",
 )
 def cli(**kwargs):
-    if not kwargs["api_key"]:
-        kwargs["api_key"] = os.getenv("TODOIST_API_KEY")
-
     if not kwargs["api_key"]:
         raise click.ClickException("No API key found")
 

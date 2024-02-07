@@ -33,7 +33,9 @@ def patch_todoist_api():
         )
 
         patched_function = backoff.on_exception(
-            backoff.expo, requests.exceptions.HTTPError
+            backoff.expo,
+            requests.exceptions.HTTPError,
+            max_tries=5,
         )(original_function)
 
         setattr(
