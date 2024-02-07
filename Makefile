@@ -1,8 +1,8 @@
 .PHONY: build build-debug docker-push
 
-IMAGE_NAME ?= ghcr.io/$(shell gh repo view --json nameWithOwner --jq '.nameWithOwner' | tr -d '[:space:]')
 IMAGE_TAG ?= latest
 GITHUB_REPOSITORY ?= $(shell gh repo view --json nameWithOwner --jq '.nameWithOwner' | tr -d '[:space:]')
+IMAGE_NAME ?= ghcr.io/$(GITHUB_REPOSITORY)
 
 # NOTE this requires a custom nixpacks build to work:
 # 		 https://github.com/railwayapp/nixpacks/pulls?q=is%3Apr+author%3Ailoveitaly
@@ -19,8 +19,11 @@ build:
 build-shell: build
 	docker run -it $(IMAGE_NAME):$(IMAGE_TAG) bash -c 'source /opt/venv/bin/activate'
 
-build-debug:
+build-dump:
 	$(BUILD_CMD) --out .
+
+build-debug: build-dump
+	BUILDX_EXPERIMENTAL=1 docker buildx debug --invoke bash build . -f ./.nixpacks/Dockerfile
 
 docker-push: build
 	docker push $(IMAGE_NAME):$(IMAGE_TAG)
