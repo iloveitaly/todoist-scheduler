@@ -1,8 +1,9 @@
-.env
-.envrc
+.env*
 __pycache__
 .mypy_cache
 TODO
 filters.json
-.nixpacks
 .venv
+.DS_Store
+.git
+.github

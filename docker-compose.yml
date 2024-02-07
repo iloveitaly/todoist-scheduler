@@ -1,0 +1,9 @@
+version: "3.8"
+
+services:
+  todoist-scheduler:
+    image: ghcr.io/iloveitaly/todoist-scheduler:latest
+    restart: always
+    env_file: env-todoist
+    environment:
+      - SCHEDULE=0 0 * * *
