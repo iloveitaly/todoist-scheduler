@@ -1,3 +1,12 @@
+## [0.5.2](https://github.com/iloveitaly/todoist-scheduler/compare/v0.5.1...v0.5.2) (2024-02-19)
+
+
+### Bug Fixes
+
+* package update, mostly to trigger a new build to test docker push ([8c08067](https://github.com/iloveitaly/todoist-scheduler/commit/8c08067e6cd4d3bf876d90554fd23ca7d1bf449f))
+
+
+
 ## [0.5.1](https://github.com/iloveitaly/todoist-scheduler/compare/v0.5.0...v0.5.1) (2024-02-19)
 
 
@@ -37,15 +46,6 @@
 ### Bug Fixes
 
 * inline todoist api change that isn't going to happen ([f964269](https://github.com/iloveitaly/todoist-scheduler/commit/f9642698774f274df95ae0819f1ecbc8fcd24557))
-
-
-
-## [0.3.1](https://github.com/iloveitaly/todoist-scheduler/compare/v0.3.0...v0.3.1) (2023-08-21)
-
-
-### Bug Fixes
-
-* more safe internet check ([87743e1](https://github.com/iloveitaly/todoist-scheduler/commit/87743e130ddfe04fd45d95ae5a98115bfb27e8ca))
 
 
 
