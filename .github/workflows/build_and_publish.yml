@@ -71,6 +71,36 @@ jobs:
           body: ${{ steps.changelog.outputs.clean_changelog }}
           tag_name: ${{ steps.changelog.outputs.tag }}
 
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v3
+        if: ${{ steps.changelog.outputs.skipped == 'false' }}
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          # gh secret set GH_PERSONAL_TOKEN --app actions --body ghp_
+          password: ${{ secrets.GH_PERSONAL_TOKEN }}
+
+      - name: Install nixpacks
+        if: ${{ steps.changelog.outputs.skipped == 'false' }}
+        run: |
+          curl -sSL https://nixpacks.com/install.sh | bash
+
+      - name: Nixpacks version
+        if: ${{ steps.changelog.outputs.skipped == 'false' }}
+        run: |
+          nixpacks --version
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+
+      - name: Build with nixpacks
+        if: ${{ steps.changelog.outputs.skipped == 'false' }}
+        run: |
+          # TODO remove this once nixpacks supports poetry
+          export NIXPACKS_PYTHON_VERSION="${{ steps.versions.outputs.python }}"
+          export NIXPACKS_POETRY_VERSION="${{ steps.versions.outputs.poetry }}"
+          make docker-push
+
       - name: Sync Repository Metadata
         # uses: kbrashears5/github-action-repo-sync@v1.0.0
         uses: iloveitaly/github-action-repo-sync@python

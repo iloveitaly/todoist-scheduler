@@ -4,11 +4,13 @@ IMAGE_TAG ?= latest
 GITHUB_REPOSITORY ?= $(shell gh repo view --json nameWithOwner --jq '.nameWithOwner' | tr -d '[:space:]')
 IMAGE_NAME ?= ghcr.io/$(GITHUB_REPOSITORY)
 
-# NOTE this requires a custom nixpacks build to work:
+# TODO once nixpacks is updated to support asdf we can remove hardcoded environment variables below
 # 		 https://github.com/railwayapp/nixpacks/pulls?q=is%3Apr+author%3Ailoveitaly
 
 # label is important here in order for the package to show up on the github repo
 BUILD_CMD = nixpacks build . --name $(IMAGE_NAME) \
+		--env NIXPACKS_PYTHON_VERSION \
+		--env NIXPACKS_POETRY_VERSION \
 		--label org.opencontainers.image.source=https://github.com/$(GITHUB_REPOSITORY) \
 		--platform linux/arm64/v8 \
 		--tag $(IMAGE_TAG)
