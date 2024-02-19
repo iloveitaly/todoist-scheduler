@@ -1,3 +1,12 @@
+## [0.5.3](https://github.com/iloveitaly/todoist-scheduler/compare/v0.5.2...v0.5.3) (2024-02-19)
+
+
+### Bug Fixes
+
+* attempt to version + push a new build ([7b88f9d](https://github.com/iloveitaly/todoist-scheduler/commit/7b88f9d14c0df2cbe61e4bf4116667e8bfa340c1))
+
+
+
 ## [0.5.2](https://github.com/iloveitaly/todoist-scheduler/compare/v0.5.1...v0.5.2) (2024-02-19)
 
 
@@ -37,15 +46,6 @@
 ### Bug Fixes
 
 * adding backoff to all todoist methods ([5a54e1a](https://github.com/iloveitaly/todoist-scheduler/commit/5a54e1a0f75d229e86aedab629a174fbe13f943c))
-
-
-
-## [0.3.2](https://github.com/iloveitaly/todoist-scheduler/compare/v0.3.1...v0.3.2) (2023-10-12)
-
-
-### Bug Fixes
-
-* inline todoist api change that isn't going to happen ([f964269](https://github.com/iloveitaly/todoist-scheduler/commit/f9642698774f274df95ae0819f1ecbc8fcd24557))
 
 
 
