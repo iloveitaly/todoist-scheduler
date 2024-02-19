@@ -13,6 +13,8 @@ permissions:
 env:
   PIP_DEFAULT_TIMEOUT: 60
   PIP_RETRIES: 5
+  # required for `gh` cli to work
+  GH_TOKEN: ${{ secrets.github_token }}
 
 jobs:
   build-and-publish:
