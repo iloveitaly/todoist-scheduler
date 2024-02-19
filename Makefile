@@ -2,7 +2,7 @@
 
 IMAGE_TAG ?= latest
 GITHUB_REPOSITORY ?= $(shell gh repo view --json nameWithOwner --jq '.nameWithOwner' | tr -d '[:space:]')
-GITHUB_DESCRIPTION ?= $(shell gh api repos/iloveitaly/todoist-scheduler --jq .description | sed 's/^[ \t]*//;s/[ \t]*$//')
+GITHUB_DESCRIPTION ?= $(shell gh api repos/$(GITHUB_REPOSITORY) --jq .description | sed 's/^[ \t]*//;s/[ \t]*$$//')
 IMAGE_NAME ?= ghcr.io/$(GITHUB_REPOSITORY)
 
 # TODO once nixpacks is updated to support asdf we can remove hardcoded environment variables below
