@@ -10,6 +10,10 @@ on:
 permissions:
   contents: write
 
+env:
+  PIP_DEFAULT_TIMEOUT: 60
+  PIP_RETRIES: 5
+
 jobs:
   build-and-publish:
     runs-on: ubuntu-latest

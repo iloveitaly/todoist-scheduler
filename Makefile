@@ -2,6 +2,7 @@
 
 IMAGE_TAG ?= latest
 GITHUB_REPOSITORY ?= $(shell gh repo view --json nameWithOwner --jq '.nameWithOwner' | tr -d '[:space:]')
+GITHUB_DESCRIPTION ?= $(shell gh api repos/iloveitaly/todoist-scheduler --jq .description | sed 's/^[ \t]*//;s/[ \t]*$//')
 IMAGE_NAME ?= ghcr.io/$(GITHUB_REPOSITORY)
 
 # TODO once nixpacks is updated to support asdf we can remove hardcoded environment variables below
@@ -12,6 +13,7 @@ BUILD_CMD = nixpacks build . --name $(IMAGE_NAME) \
 		--env NIXPACKS_PYTHON_VERSION \
 		--env NIXPACKS_POETRY_VERSION \
 		--label org.opencontainers.image.source=https://github.com/$(GITHUB_REPOSITORY) \
+		--label "org.opencontainers.image.description=$(GITHUB_DESCRIPTION)" \
 		--platform linux/arm64/v8 \
 		--tag $(IMAGE_TAG)
 
