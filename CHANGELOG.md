@@ -1,3 +1,12 @@
+## [0.5.1](https://github.com/iloveitaly/todoist-scheduler/compare/v0.5.0...v0.5.1) (2024-02-19)
+
+
+### Bug Fixes
+
+* add nixpacks build and push to ci ([602ba40](https://github.com/iloveitaly/todoist-scheduler/commit/602ba403828507257133954abece3dda19841ac5))
+
+
+
 # [0.5.0](https://github.com/iloveitaly/todoist-scheduler/compare/v0.3.3...v0.5.0) (2024-02-19)
 
 
@@ -37,17 +46,6 @@
 ### Bug Fixes
 
 * more safe internet check ([87743e1](https://github.com/iloveitaly/todoist-scheduler/commit/87743e130ddfe04fd45d95ae5a98115bfb27e8ca))
-
-
-
-# [0.3.0](https://github.com/iloveitaly/todoist-scheduler/compare/v0.2.0...v0.3.0) (2023-08-07)
-
-
-### Features
-
-* finalize jitter support ([74659ea](https://github.com/iloveitaly/todoist-scheduler/commit/74659ead2d5ebdf2f2c8af8be871f82405c9a86d))
-* json-level overrides with saved filter support ([cbe3eb1](https://github.com/iloveitaly/todoist-scheduler/commit/cbe3eb16f648001680d2af25dab98083c9758748))
-* remove python dotenv ([042ca4d](https://github.com/iloveitaly/todoist-scheduler/commit/042ca4de0771465b9db9722223a68a2174ae8466))
 
 
 
