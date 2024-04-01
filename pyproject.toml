@@ -17,7 +17,7 @@ backoff = "^2.2.1"
 apscheduler = "^3.10.4"
 
 [tool.poetry.dev-dependencies]
-black = "^24.2.0"
+black = "^24.3.0"
 pylint = "^3.0.3"
 isort = "^5.13.2"
 rich = "^13.7.0"
