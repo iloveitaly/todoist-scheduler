@@ -71,7 +71,7 @@ jobs:
 
       - name: Github Release
         if: ${{ steps.changelog.outputs.skipped == 'false' }}
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         with:
           # output options: https://github.com/TriPSs/conventional-changelog-action#outputs
           body: ${{ steps.changelog.outputs.clean_changelog }}
