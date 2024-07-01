@@ -610,13 +610,13 @@ files = [
 
 [[package]]
 name = "todoist-api-python"
-version = "2.1.3"
+version = "2.1.5"
 description = "Official Python SDK for the Todoist REST API."
 optional = false
-python-versions = ">=3.9,<4.0"
+python-versions = "<4.0,>=3.9"
 files = [
-    {file = "todoist_api_python-2.1.3-py3-none-any.whl", hash = "sha256:7d182ff9d663dddae445ad118cb56ad8596e70a2f0f38bd4ebfa40bbba60fb0a"},
-    {file = "todoist_api_python-2.1.3.tar.gz", hash = "sha256:6fcbb48f4432191f7019226b02808e031da84019c5806410bb1d8acdd865d295"},
+    {file = "todoist_api_python-2.1.5-py3-none-any.whl", hash = "sha256:cef20d0106421a6571b477a631b6157e96a3303b44427f6a3cafef73f219f677"},
+    {file = "todoist_api_python-2.1.5.tar.gz", hash = "sha256:bde4f5c91bee06ad22b85366c09f435e60e16c2770e561a6368bc17ca767541f"},
 ]
 
 [package.dependencies]
