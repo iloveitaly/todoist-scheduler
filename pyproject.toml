@@ -18,7 +18,7 @@ apscheduler = "^3.10.4"
 
 [tool.poetry.dev-dependencies]
 black = "^24.4.2"
-pylint = "^3.2.3"
+pylint = "^3.2.5"
 isort = "^5.13.2"
 rich = "^13.7.1"
 
