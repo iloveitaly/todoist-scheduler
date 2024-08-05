@@ -94,3 +94,34 @@ api = TodoistAPI(os.getenv("TODOIST_API_KEY"))
 ```
 
 Note that `ipython` is not included in the repo, [I install all my debugging tools via this alias](https://github.com/iloveitaly/dotfiles/blob/e41a309b0ca1f5099bc6d902d0956ba0fc997db1/.aliases#L76-L77) instead of including them in the poetry config.
+
+## New Command: remove_dead_link_tasks
+
+A new command `remove_dead_link_tasks` has been added to handle the removal of tasks older than 180 days with dead links. This command also supports a dry-run flag to log tasks without deleting them.
+
+### Usage
+
+```text
+Usage: remove_dead_link_tasks [OPTIONS]
+
+  Removes tasks older than 180 days with dead links
+
+Options:
+  --dry-run              Dry run the task updates
+  --api-key TEXT         API key. Sourced from TODOIST_API_KEY as well
+  --help                 Show this message and exit.
+```
+
+### Examples
+
+#### Remove tasks with dead links
+
+```shell
+remove_dead_link_tasks --api-key YOUR_API_KEY
+```
+
+#### Dry-run mode
+
+```shell
+remove_dead_link_tasks --api-key YOUR_API_KEY --dry-run
+```
