@@ -3,6 +3,8 @@ from todoist_api_python.api import TodoistAPI
 import random
 import datetime
 import logging, os
+import re
+import requests
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(
@@ -169,3 +171,27 @@ def process_rule(
         else:
             logger.debug("leaving task %s", low_priority_task.content)
             remaining_tasks -= 1
+
+
+def remove_dead_link_tasks(dry_run, api_key):
+    if not _is_internet_connected():
+        print("internet is not connected")
+        return
+
+    api = TodoistAPI(api_key)
+    tasks = api.get_tasks()
+
+    for task in tasks:
+        task_due_date = datetime.datetime.strptime(task.due.date, "%Y-%m-%d")
+        if (datetime.datetime.now() - task_due_date).days > 180:
+            urls = re.findall(r'(https?://\S+)', task.content)
+            for url in urls:
+                try:
+                    response = requests.head(url, allow_redirects=True)
+                    if response.status_code != 200:
+                        logger.info("Dead link found in task: %s", task.content)
+                        if not dry_run:
+                            api.delete_task(task.id)
+                            logger.info("Deleted task: %s", task.content)
+                except requests.RequestException as e:
+                    logger.error("Error checking URL %s: %s", url, e)

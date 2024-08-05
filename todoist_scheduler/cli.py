@@ -6,7 +6,28 @@ import pyjson5 as json  # allows comments in json
 from todoist_scheduler import main
 
 
-@click.command(help="Organizes todoist tasks based on custom rules")
+@click.group()
+@click.option(
+    "--dry-run",
+    default=False,
+    help="Dry run the task updates",
+    show_default=True,
+    type=bool,
+    is_flag=True,
+)
+@click.option(
+    "--api-key",
+    default=os.getenv("TODOIST_API_KEY"),
+    help="API key. Sourced from TODOIST_API_KEY too.",
+)
+@click.pass_context
+def cli(ctx, dry_run, api_key):
+    ctx.ensure_object(dict)
+    ctx.obj["dry_run"] = dry_run
+    ctx.obj["api_key"] = api_key
+
+
+@cli.command(help="Organizes todoist tasks based on custom rules")
 @click.option(
     "--task-limit",
     default=20,
@@ -42,21 +63,9 @@ from todoist_scheduler import main
     show_default=True,
     type=int,
 )
-@click.option(
-    "--dry-run",
-    default=False,
-    help="Dry run the task updates",
-    show_default=True,
-    type=bool,
-    is_flag=True,
-)
-@click.option(
-    "--api-key",
-    default=os.getenv("TODOIST_API_KEY"),
-    help="API key. Sourced from TODOIST_API_KEY too.",
-)
-def cli(**kwargs):
-    if not kwargs["api_key"]:
+@click.pass_context
+def organize_tasks(ctx, **kwargs):
+    if not ctx.obj["api_key"]:
         raise click.ClickException("No API key found")
 
     with open(kwargs["filter_json"]) as f:
@@ -64,7 +73,19 @@ def cli(**kwargs):
 
     del kwargs["filter_json"]
 
+    kwargs["dry_run"] = ctx.obj["dry_run"]
+    kwargs["api_key"] = ctx.obj["api_key"]
+
     main.apply_todoist_filters(**kwargs)
+
+
+@cli.command(help="Removes tasks older than 180 days with dead links")
+@click.pass_context
+def remove_dead_link_tasks(ctx):
+    if not ctx.obj["api_key"]:
+        raise click.ClickException("No API key found")
+
+    main.remove_dead_link_tasks(dry_run=ctx.obj["dry_run"], api_key=ctx.obj["api_key"])
 
 
 if __name__ == "__main__":
