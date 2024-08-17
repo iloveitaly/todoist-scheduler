@@ -1,5 +1,6 @@
 """
-This is experimental
+This was an experiment that didn't work. It's hard to determine if a URL is broken outside of DNS records
+not existing. It also just didn't seem to be that many urls after I ran this across >2k tasks.
 """
 
 import datetime
@@ -22,7 +23,7 @@ URL_REGEX = (
     r"http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+"
 )
 
-DNS_ONLY_CHECK = True
+DNS_ONLY_CHECK = False
 USER_AGENT = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Safari/605.1.1"
 
 
@@ -72,6 +73,15 @@ def is_url_dead(url: str):
     if DNS_ONLY_CHECK:
         return False
 
+    proxy_url = ""
+    proxies = {}
+
+    if proxy_url:
+        proxies = {
+            "http": f"http://{proxy_url}",
+            "https": f"http://{proxy_url}",
+        }
+
     try:
         # {'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'}
         response = requests.get(
@@ -82,6 +92,7 @@ def is_url_dead(url: str):
                 # https://www.useragents.me
                 "User-Agent": USER_AGENT
             },
+            proxies=proxies,
         )
 
         if response.status_code != 200 and response.status_code != 404:
