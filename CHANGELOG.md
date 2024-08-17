@@ -1,3 +1,12 @@
+# [0.6.0](https://github.com/iloveitaly/todoist-scheduler/compare/v0.5.4...v0.6.0) (2024-08-17)
+
+
+### Features
+
+* archive tasks with dead urls ([4d759ea](https://github.com/iloveitaly/todoist-scheduler/commit/4d759eac5868c326d6857b84aef1292cdd3325bd))
+
+
+
 ## [0.5.4](https://github.com/iloveitaly/todoist-scheduler/compare/v0.5.2...v0.5.4) (2024-02-19)
 
 
@@ -38,15 +47,6 @@
 ### Features
 
 * adding main cron for docker ([067d622](https://github.com/iloveitaly/todoist-scheduler/commit/067d62252166088c427f8680438330c5c57bea57))
-
-
-
-## [0.3.3](https://github.com/iloveitaly/todoist-scheduler/compare/v0.3.2...v0.3.3) (2023-11-28)
-
-
-### Bug Fixes
-
-* adding backoff to all todoist methods ([5a54e1a](https://github.com/iloveitaly/todoist-scheduler/commit/5a54e1a0f75d229e86aedab629a174fbe13f943c))
 
 
 
