@@ -22,8 +22,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
       - name: ASDF Parse
         uses: kota65535/github-asdf-parse-action@v2.0.0
@@ -86,29 +84,9 @@ jobs:
           # gh secret set GH_PERSONAL_TOKEN --app actions --body ghp_
           password: ${{ secrets.GH_PERSONAL_TOKEN }}
 
-      - name: Install nixpacks
+      - name: Build and push Docker images
         if: ${{ steps.changelog.outputs.skipped == 'false' }}
-        run: |
-          curl -sSL https://nixpacks.com/install.sh | bash
-
-      - name: Nixpacks version
-        if: ${{ steps.changelog.outputs.skipped == 'false' }}
-        run: |
-          nixpacks --version
-
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@v3
-
-      - name: Build with nixpacks
-        if: ${{ steps.changelog.outputs.skipped == 'false' }}
-        run: |
-          # TODO remove this once nixpacks supports poetry
-          export NIXPACKS_PYTHON_VERSION="${{ steps.versions.outputs.python }}"
-          export NIXPACKS_POETRY_VERSION="${{ steps.versions.outputs.poetry }}"
-          make docker-push
-
-      - name: Sync Repository Metadata
-        # uses: kbrashears5/github-action-repo-sync@v1.0.0
-        uses: iloveitaly/github-action-repo-sync@python
+        uses: iloveitaly/github-action-nixpacks@main
         with:
-          TOKEN: ${{ secrets.GH_PERSONAL_TOKEN }}
+          platforms: "linux/amd64,linux/arm64"
+          push: true
