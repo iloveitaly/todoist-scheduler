@@ -23,7 +23,7 @@ regex = "^2024.7.24"
 black = "^24.8.0"
 pylint = "^3.3.1"
 isort = "^5.13.2"
-rich = "^13.8.0"
+rich = "^13.8.1"
 
 [tool.poetry.scripts]
 todoist-scheduler = "todoist_scheduler:cli"
