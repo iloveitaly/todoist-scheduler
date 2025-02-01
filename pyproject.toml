@@ -21,7 +21,7 @@ regex = "^2024.7.24"
 
 [tool.poetry.dev-dependencies]
 black = "^24.10.0"
-pylint = "^3.3.3"
+pylint = "^3.3.4"
 isort = "^5.13.2"
 rich = "^13.9.4"
 
