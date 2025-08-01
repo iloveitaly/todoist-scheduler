@@ -17,7 +17,7 @@ backoff = "^2.2.1"
 apscheduler = "^3.10.4"
 structlog = ">=24.4,<26.0"
 python-decouple-typed = "^3.11.0"
-regex = "^2024.7.24"
+regex = ">=2024.7.24,<2026.0.0"
 
 [tool.poetry.dev-dependencies]
 black = "^25.1.0"
