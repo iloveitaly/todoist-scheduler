@@ -14,14 +14,14 @@ files = [
 
 [[package]]
 name = "apscheduler"
-version = "3.11.0"
+version = "3.11.2"
 description = "In-process task scheduler with Cron-like capabilities"
 optional = false
 python-versions = ">=3.8"
 groups = ["main"]
 files = [
-    {file = "APScheduler-3.11.0-py3-none-any.whl", hash = "sha256:fc134ca32e50f5eadcc4938e3a4545ab19131435e851abb40b34d63d5141c6da"},
-    {file = "apscheduler-3.11.0.tar.gz", hash = "sha256:4c622d250b0955a65d5d0eb91c33e6d43fd879834bf541e0a18661ae60460133"},
+    {file = "apscheduler-3.11.2-py3-none-any.whl", hash = "sha256:ce005177f741409db4e4dd40a7431b76feb856b9dd69d57e0da49d6715bfd26d"},
+    {file = "apscheduler-3.11.2.tar.gz", hash = "sha256:2a9966b052ec805f020c8c4c3ae6e6a06e24b1bf19f2e11d91d8cca0473eef41"},
 ]
 
 [package.dependencies]
@@ -35,7 +35,7 @@ mongodb = ["pymongo (>=3.0)"]
 redis = ["redis (>=3.0)"]
 rethinkdb = ["rethinkdb (>=2.4.0)"]
 sqlalchemy = ["sqlalchemy (>=1.4)"]
-test = ["APScheduler[etcd,mongodb,redis,rethinkdb,sqlalchemy,tornado,zookeeper]", "PySide6 ; platform_python_implementation == \"CPython\" and python_version < \"3.14\"", "anyio (>=4.5.2)", "gevent ; python_version < \"3.14\"", "pytest", "pytz", "twisted ; python_version < \"3.14\""]
+test = ["APScheduler[etcd,mongodb,redis,rethinkdb,sqlalchemy,tornado,zookeeper]", "PySide6 ; platform_python_implementation == \"CPython\" and python_version < \"3.14\"", "anyio (>=4.5.2)", "gevent ; python_version < \"3.14\"", "pytest", "pytest-timeout", "pytz", "twisted ; python_version < \"3.14\""]
 tornado = ["tornado (>=4.3)"]
 twisted = ["twisted"]
 zookeeper = ["kazoo"]
