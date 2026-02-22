@@ -20,7 +20,7 @@ python-decouple-typed = "^3.11.0"
 regex = ">=2024.7.24,<2027.0.0"
 
 [tool.poetry.dev-dependencies]
-black = "^25.12.0"
+black = "^26.1.0"
 pylint = "^4.0.4"
 isort = "^7.0.0"
 rich = "^14.3.3"
@@ -30,7 +30,7 @@ todoist-scheduler = "todoist_scheduler:cli"
 
 [tool.poetry.group.dev.dependencies]
 isort = ">=5.13.2,<8.0.0"
-black = ">=24.8,<26.0"
+black = ">=24.8,<27.0"
 pyright = "^1.1.376"
 pylint = ">=3.2.6,<5.0.0"
 
