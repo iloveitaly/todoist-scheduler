@@ -20,7 +20,7 @@ python-decouple-typed = "^3.11.0"
 regex = ">=2024.7.24,<2027.0.0"
 
 [tool.poetry.dev-dependencies]
-black = "^26.3.1"
+black = "^26.5.1"
 pylint = "^4.0.5"
 isort = "^8.0.1"
 rich = "^15.0.0"
