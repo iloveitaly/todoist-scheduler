@@ -655,14 +655,14 @@ files = [
 
 [[package]]
 name = "pylint"
-version = "4.0.5"
+version = "4.0.6"
 description = "python code static checker"
 optional = false
 python-versions = ">=3.10.0"
 groups = ["dev"]
 files = [
-    {file = "pylint-4.0.5-py3-none-any.whl", hash = "sha256:00f51c9b14a3b3ae08cff6b2cdd43f28165c78b165b628692e428fb1f8dc2cf2"},
-    {file = "pylint-4.0.5.tar.gz", hash = "sha256:8cd6a618df75deb013bd7eb98327a95f02a6fb839205a6bbf5456ef96afb317c"},
+    {file = "pylint-4.0.6-py3-none-any.whl", hash = "sha256:d11a0e1fdb7b1cd46ec5d6fc78fee8b95f28695b2d6140e5809925f61e32ea54"},
+    {file = "pylint-4.0.6.tar.gz", hash = "sha256:52f19191bee08bf103f9705ad1a0ece4aa5a0a4ef2bdcbd969375a1e6f6579d5"},
 ]
 
 [package.dependencies]
@@ -1017,4 +1017,4 @@ devenv = ["check-manifest", "pytest (>=4.3)", "pytest-cov", "pytest-mock (>=3.3)
 [metadata]
 lock-version = "2.1"
 python-versions = "^3.10"
-content-hash = "58052c299407ac13cd7fe974177a9813d5beaced00913a2d28626ab6cd166a32"
+content-hash = "b63e1a4951d606c7edec0af649c47d69d90ea6f668cd163c5030892e248669c7"
