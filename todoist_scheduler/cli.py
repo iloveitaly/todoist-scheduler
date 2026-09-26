@@ -3,10 +3,12 @@ import os
 import click
 import pyjson5 as json  # allows comments in json
 
-from todoist_scheduler import main
+from todoist_scheduler.main import apply_todoist_filters
+from todoist_scheduler.version import __version__
 
 
 @click.command(help="Organizes todoist tasks based on custom rules")
+@click.version_option(__version__, "-V", "--version")
 @click.option(
     "--task-limit",
     default=20,
@@ -60,11 +62,11 @@ def cli(**kwargs):
         raise click.ClickException("No API key found")
 
     with open(kwargs["filter_json"]) as f:
-        kwargs["rules"] = json.load(f)
+        kwargs["rules"] = json.loads(f.read())
 
     del kwargs["filter_json"]
 
-    main.apply_todoist_filters(**kwargs)
+    apply_todoist_filters(**kwargs)
 
 
 if __name__ == "__main__":

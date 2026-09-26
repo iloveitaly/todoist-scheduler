@@ -1,8 +1,8 @@
 import os
 
+import click
 from apscheduler.schedulers.background import BlockingScheduler
 from apscheduler.triggers.cron import CronTrigger
-import click
 
 from todoist_scheduler import cli
 

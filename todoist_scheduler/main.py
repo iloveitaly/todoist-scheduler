@@ -5,7 +5,7 @@ import random
 
 from todoist_api_python.api import TodoistAPI
 
-import todoist_scheduler.patch as _
+import todoist_scheduler.patch as _  # noqa: F401
 from todoist_scheduler.internet import wait_for_internet_connection
 
 logger = logging.getLogger(__name__)
@@ -20,7 +20,7 @@ logger.setLevel(getattr(logging, log_level.upper(), logging.INFO))
 
 
 def _is_sunday():
-    day_of_the_week = datetime.date.today().weekday()
+    day_of_the_week = datetime.datetime.now(datetime.UTC).date().weekday()
     return day_of_the_week == 6
 
 
@@ -33,23 +33,30 @@ def _due_string(punt_time, jitter_days):
     return f"in {random_days} days"
 
 
-# https://github.com/iloveitaly/todoist-api-python/commit/ec83531fae94a2ccd0a4bd6b2d1db95d86b129b6
+# https://developer.todoist.com/api/v1/#tag/Sync
 def todoist_get_filters(api):
-    from todoist_api_python.endpoints import get_sync_url
-    from todoist_api_python.http_requests import post
+    import httpx
 
-    endpoint = get_sync_url("sync")
-    data = {
-        "resource_types": ["filters"],
-        "sync_token": "*",
-    }
-    resource_data = post(api._session, endpoint, api._token, data=data)
-    return resource_data
+    response = httpx.post(
+        "https://api.todoist.com/api/v1/sync",
+        headers={"Authorization": f"Bearer {api._token}"},
+        data={"sync_token": "*", "resource_types": '["filters"]'},
+        timeout=30.0,
+    )
+    response.raise_for_status()
+    return response.json()
 
 
 def _get_all_filters(api):
     response = todoist_get_filters(api)
-    return {filter["name"]: filter["query"] for filter in response["filters"]}
+    return {filter["name"]: filter["query"] for filter in response.get("filters", [])}
+
+
+def _fetch_tasks(api, filter_query):
+    tasks = []
+    for page in api.filter_tasks(query=filter_query):
+        tasks.extend(page)
+    return tasks
 
 
 def apply_todoist_filters(api_key, rules, task_limit, default_filter, **kwargs):
@@ -67,7 +74,7 @@ def apply_todoist_filters(api_key, rules, task_limit, default_filter, **kwargs):
             **kwargs,
         )
 
-    all_remaining_tasks = api.get_tasks(filter=default_filter)
+    all_remaining_tasks = _fetch_tasks(api, filter_query=default_filter)
 
     # let the user know they should incrementally improve their categorization so there's a reasonable number of tasks left
     if len(all_remaining_tasks) > task_limit:
@@ -77,15 +84,15 @@ def apply_todoist_filters(api_key, rules, task_limit, default_filter, **kwargs):
 def process_rule(
     api, rule, dry_run, default_filter, system_filters, punt_time, jitter_days
 ):
-    filter_with_label = f'{default_filter} & {rule["filter"]}'
+    filter_with_label = f"{default_filter} & {rule['filter']}"
 
     if rule["filter"] in system_filters:
         logger.debug("using system filter %s", rule["filter"])
-        filter_with_label = f'{default_filter} & {system_filters[rule["filter"]]}'
+        filter_with_label = f"{default_filter} & {system_filters[rule['filter']]}"
 
     logger.debug(filter_with_label)
 
-    tasks_with_label = api.get_tasks(filter=filter_with_label)
+    tasks_with_label = _fetch_tasks(api, filter_query=filter_with_label)
 
     # TODO should allow to be specified via CLI
     priority = 1

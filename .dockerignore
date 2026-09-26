@@ -7,3 +7,4 @@ filters.json
 .DS_Store
 .git
 .github
+tmp/

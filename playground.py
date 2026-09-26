@@ -1,7 +1,8 @@
-#!/usr/bin/env -S ipython -i
+#!/usr/bin/env -S uv tool run ipython -i
 
 import os
+
 from todoist_api_python.api import TodoistAPI
 
-api_key = os.getenv("TODOIST_API_KEY")
+api_key = os.getenv("TODOIST_API_KEY", "")
 api = TodoistAPI(api_key)

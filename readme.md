@@ -1,4 +1,8 @@
-[![Release Notes](https://img.shields.io/github/release/iloveitaly/todoist-scheduler)](https://github.com/iloveitaly/todoist-scheduler/releases) [![Downloads](https://static.pepy.tech/badge/todoist-scheduler/month)](https://pepy.tech/project/todoist-scheduler) [![Python Versions](https://img.shields.io/pypi/pyversions/todoist-scheduler)](https://pypi.org/project/todoist-scheduler) ![GitHub CI Status](https://github.com/iloveitaly/todoist-scheduler/actions/workflows/build_and_publish.yml/badge.svg) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Release Notes](https://img.shields.io/github/release/iloveitaly/todoist-scheduler)](https://github.com/iloveitaly/todoist-scheduler/releases)
+[![Downloads](https://static.pepy.tech/badge/todoist-scheduler/month)](https://pepy.tech/project/todoist-scheduler)
+[![Python Versions](https://img.shields.io/pypi/pyversions/todoist-scheduler)](https://pypi.org/project/todoist-scheduler)
+![GitHub CI Status](https://github.com/iloveitaly/todoist-scheduler/actions/workflows/build_and_publish.yml/badge.svg)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 # Todoist Task Scheduler & Filterer
 
@@ -12,6 +16,18 @@ This tool enables you to set up rules to automatically punt tasks that don't nee
 
 This tool has helped in a big way, acting as a 'virtual assistant' in a way: automatically determining what I shouldn't see for the day. I tie this into a 'first awake' script executed by [hyper focus](https://mikebian.co/hyper-focus).
 
+## Installation
+
+```bash
+uv tool install todoist-scheduler
+```
+
+Or add as a dependency:
+
+```bash
+uv add todoist-scheduler
+```
+
 ## Usage
 
 ```text
@@ -20,6 +36,7 @@ Usage: todoist-scheduler [OPTIONS]
   Organizes todoist tasks based on custom rules
 
 Options:
+  -V, --version          Show the version and exit.
   --task-limit INTEGER   Total task limit for the day  [default: 20]
   --default-filter TEXT  Default todoist filter  [default: (today | overdue) &
                          !assigned to:others & !recurring]
@@ -90,7 +107,10 @@ Play with the Todoist API (in `ipython`):
 ```python
 from todoist_api_python.api import TodoistAPI
 import os
+
 api = TodoistAPI(os.getenv("TODOIST_API_KEY"))
 ```
 
-Note that `ipython` is not included in the repo, [I install all my debugging tools via this alias](https://github.com/iloveitaly/dotfiles/blob/e41a309b0ca1f5099bc6d902d0956ba0fc997db1/.aliases#L76-L77) instead of including them in the poetry config.
+---
+
+*This project was created from [iloveitaly/python-package-template](https://github.com/iloveitaly/python-package-template)*
