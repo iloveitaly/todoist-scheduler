@@ -7,6 +7,18 @@
 
 
 
+## [0.6.1](https://github.com/iloveitaly/todoist-scheduler/compare/v0.6.0...v0.6.1) (2026-09-26)
+
+
+### Bug Fixes
+
+* rename readme.md to README.md for case-sensitive filesystems ([72ebdac](https://github.com/iloveitaly/todoist-scheduler/commit/72ebdacfb217ad30cb43d328b70129df6727c7a0))
+
+
+### Documentation
+
+* notes on failed archive test ([9b29741](https://github.com/iloveitaly/todoist-scheduler/commit/9b29741c1ce7f9df217f14c9053028ea30891f3d))
+
 ## [0.5.4](https://github.com/iloveitaly/todoist-scheduler/compare/v0.5.2...v0.5.4) (2024-02-19)
 
 
@@ -47,6 +59,3 @@
 ### Features
 
 * adding main cron for docker ([067d622](https://github.com/iloveitaly/todoist-scheduler/commit/067d62252166088c427f8680438330c5c57bea57))
-
-
-
