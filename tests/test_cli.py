@@ -20,11 +20,28 @@ def test_cli_version():
     assert "version" in result.output
 
 
-def test_cli_no_api_key():
+def test_cli_no_api_key(tmp_path):
+    dummy_filter = tmp_path / "filters.json"
+    dummy_filter.write_text("[]")
     runner = CliRunner()
-    result = runner.invoke(cli, ["--api-key", ""], env={"TODOIST_API_KEY": ""})
+    result = runner.invoke(
+        cli,
+        ["--api-key", "", "--filter-json", str(dummy_filter)],
+        env={"TODOIST_API_KEY": ""},
+    )
     assert result.exit_code != 0
     assert "No API key found" in result.output
+
+
+def test_cli_missing_filter_file(tmp_path):
+    runner = CliRunner()
+    missing_file = tmp_path / "nonexistent.json"
+    result = runner.invoke(
+        cli,
+        ["--api-key", "test", "--filter-json", str(missing_file)],
+    )
+    assert result.exit_code != 0
+    assert "does not exist" in result.output
 
 
 def test_due_string():
