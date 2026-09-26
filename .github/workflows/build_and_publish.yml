@@ -5,6 +5,7 @@ on:
       - main
       - master
   pull_request: {}
+  workflow_dispatch: {}
 
 env:
   # avoid build failures due to flaky pypi
@@ -22,6 +23,7 @@ jobs:
     permissions:
       contents: write
       packages: write
+      id-token: write
 
     steps:
       - uses: actions/checkout@v6
@@ -35,6 +37,8 @@ jobs:
       - uses: iloveitaly/github-action-direnv-load-and-mask@master
       - run: uv build
       - run: uv publish
+        env:
+          UV_PUBLISH_TOKEN: ${{ secrets.PYPI_API_TOKEN }}
 
       # Keep uv.lock in sync with pyproject.toml after release version bump without requiring extra config files
       - name: Sync uv.lock
