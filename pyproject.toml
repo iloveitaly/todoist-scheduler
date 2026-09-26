@@ -1,6 +1,6 @@
 [project]
 name = "todoist-scheduler"
-version = "0.6.1"
+version = "0.7.0"
 description = "Automatically reschedule tasks in Todoist to reduce the size of the todo lists you see each day."
 keywords = ["todoist", "scheduler", "task", "management"]
 readme = "README.md"
