@@ -13,8 +13,9 @@ def job():
     """
     try:
         cli()
-    except click.exceptions.Exit as e:
-        if e.exit_code != 0:
+    except (click.exceptions.Exit, SystemExit) as e:
+        exit_code = getattr(e, "exit_code", getattr(e, "code", 0))
+        if exit_code != 0:
             raise
 
 

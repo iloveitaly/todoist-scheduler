@@ -53,13 +53,13 @@ def patch_todoist_api():
             httpx.HTTPStatusError,
             giveup=should_give_up,
             value=extract_retry_time,
-            max_tries=8,
+            max_time=1800,
         )(original_function)
 
         patched_network = backoff.on_exception(
             backoff.expo,
             httpx.RequestError,
-            max_tries=30,
+            max_time=1800,
         )(patched_status)
 
         setattr(
