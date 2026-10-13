@@ -7,6 +7,13 @@
 
 
 
+## [0.8.1](https://github.com/iloveitaly/todoist-scheduler/compare/v0.8.0...v0.8.1) (2026-10-13)
+
+
+### Bug Fixes
+
+* handle SystemExit and use time-based retry limit ([2ac0ae0](https://github.com/iloveitaly/todoist-scheduler/commit/2ac0ae06ca267ad8240e3a0d66d0020cb8e7c6bb))
+
 ## [0.8.0](https://github.com/iloveitaly/todoist-scheduler/compare/v0.7.0...v0.8.0) (2026-09-26)
 
 
