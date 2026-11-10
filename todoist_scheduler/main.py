@@ -5,8 +5,8 @@ import random
 
 from todoist_api_python.api import TodoistAPI
 
-import todoist_scheduler.patch as _  # noqa: F401
 from todoist_scheduler.internet import wait_for_internet_connection
+from todoist_scheduler.patch import with_retry
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(
@@ -34,6 +34,7 @@ def _due_string(punt_time, jitter_days):
 
 
 # https://developer.todoist.com/api/v1/#tag/Sync
+@with_retry
 def todoist_get_filters(api):
     import httpx
 
