@@ -15,11 +15,51 @@ setup:
     if [ -f instructions.md ]; then uvx llm-ide-rules explode; fi
     @echo "activate: source ./.venv/bin/activate"
 
-# Upgrade tool versions, python dependencies, and optionally bump pyproject.toml constraints
+# Install this checkout globally in editable mode, including existing mise environments.
+# Re-run after mise upgrades, which replace the editable installation.
+[script]
+install_editable:
+    command -v jq >/dev/null
+    metadata=$(uv run --no-project --python '>=3.12' python -c 'import json, tomllib; from pathlib import Path; p = tomllib.loads(Path("pyproject.toml").read_text())["project"]; print(json.dumps({"name": p["name"], "scripts": list(p.get("scripts", {}))}))')
+    package=$(echo "$metadata" | jq -r '.name')
+    # Python distribution names are normalized for uv/pipx environment directories.
+    env_name=$(echo "$package" | tr '[:upper:]' '[:lower:]' | sed -E 's/[-_.]+/-/g')
+
+    uv tool install --force --editable .
+
+    if ! command -v mise >/dev/null; then
+        echo "mise not on PATH; uv tool only"
+    else
+        installs=$(mise ls --json --installed "pipx:$package")
+        echo "$installs" | jq -r '.[].install_path' | while IFS= read -r install_path; do
+            [ -n "$install_path" ] || continue
+            py=""
+            for candidate in "$install_path/$env_name/bin/python" "$install_path/.mise-uv/.venv/bin/python"; do
+                if [ -x "$candidate" ]; then
+                    py="$candidate"
+                    break
+                fi
+            done
+            if [ -z "$py" ]; then
+                echo "skip $install_path (no venv python)"
+                continue
+            fi
+            echo "editable into mise env: $install_path"
+            uv pip install --python "$py" --reinstall-package "$package" --editable .
+        done
+    fi
+
+    echo "$metadata" | jq -r '.scripts[]' | while IFS= read -r cli; do
+        command -v "$cli"
+    done
+
+# Switch stale mise backends, upgrade tool versions and python dependencies, and optionally bump pyproject.toml constraints
 [script]
 [arg("bump_constraints", long="bump-constraints", value="true", help="Bump pyproject.toml minimum constraints using uv-bump")]
 upgrade bump_constraints="false":
     mise self-update --yes
+    # Upgrade keeps the backend recorded in mise.lock. Switch first so the bump installs from the registry's current backend.
+    mise backends switch --yes
     mise upgrade --yes --local
     uv sync --all-groups --all-extras -U
 

@@ -111,6 +111,12 @@ import os
 api = TodoistAPI(os.getenv("TODOIST_API_KEY"))
 ```
 
+### Local CLI development
+
+Run `just install_editable` to install this checkout globally in editable mode. Source changes are reflected without reinstalling.
+
+This requires `uv`, `just`, `zsh`, and `jq`. If mise is available, the recipe also updates every installed `pipx:todoist-scheduler` environment so mise can use the local checkout. Re-run after mise upgrades, which replace those editable installations.
+
 ---
 
 *This project was created from [iloveitaly/python-package-template](https://github.com/iloveitaly/python-package-template)*
